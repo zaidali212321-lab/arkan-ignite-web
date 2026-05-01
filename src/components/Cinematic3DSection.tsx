@@ -1,9 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, lazy, Suspense } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Hero3DScene } from "@/components/three/Hero3DScene";
+import { ThreeErrorBoundary } from "@/components/three/ThreeErrorBoundary";
 import { useLang } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
+import extinguisher from "@/assets/extinguisher.png";
+
+const Hero3DScene = lazy(() =>
+  import("@/components/three/Hero3DScene").then((m) => ({ default: m.Hero3DScene }))
+);
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,7 +56,21 @@ export const Cinematic3DSection = () => {
       {/* Sticky 3D canvas — stays in the background while specs scroll. */}
       <div className="sticky top-0 h-screen w-full">
         <div ref={canvasHostRef} className="absolute inset-0">
-          <Hero3DScene targetRef={sectionRef} />
+          <ThreeErrorBoundary
+            fallback={
+              <div className="absolute inset-0 grid place-items-center">
+                <img
+                  src={extinguisher}
+                  alt=""
+                  className="h-2/3 w-auto object-contain drop-shadow-[0_30px_60px_rgba(220,38,38,0.5)]"
+                />
+              </div>
+            }
+          >
+            <Suspense fallback={null}>
+              <Hero3DScene targetRef={sectionRef} />
+            </Suspense>
+          </ThreeErrorBoundary>
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-dark/60 via-transparent to-dark/80 pointer-events-none" />
       </div>
