@@ -123,11 +123,19 @@ export const ProductDetailModal = ({
             </div>
 
             <div className="mt-auto pt-8">
-              <Button asChild size="lg" className="w-full">
-                <Link to="/contact" onClick={() => onOpenChange(false)}>
+              {!showQuote ? (
+                <Button size="lg" className="w-full" onClick={() => setShowQuote(true)}>
                   {t("pd_request_quote")}
-                </Link>
-              </Button>
+                </Button>
+              ) : (
+                <div className="rounded-2xl border border-border bg-secondary/30 p-5">
+                  <h3 className="font-display text-lg mb-4">{t("pdq_title")}</h3>
+                  <ProductQuoteForm
+                    productName={t(product.t)}
+                    onSuccess={() => onOpenChange(false)}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
