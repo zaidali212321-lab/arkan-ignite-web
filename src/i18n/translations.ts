@@ -126,6 +126,24 @@ export const translations = {
   it_fingerprint_t: { ar: "قارئ بصمة احترافي", en: "Biometric Fingerprint Reader" },
   it_fingerprint_d: { ar: "تحقق سريع ودقيق للهوية بتقنية متقدمة.", en: "Fast, accurate identity verification with advanced tech." },
 
+  // Product detail modal
+  pd_overview: { ar: "نظرة عامة", en: "Overview" },
+  pd_specs: { ar: "المواصفات الفنية", en: "Technical Specs" },
+  pd_features: { ar: "الميزات الرئيسية", en: "Key Features" },
+  pd_gallery: { ar: "معرض الصور", en: "Gallery" },
+  pd_request_quote: { ar: "اطلب عرض سعر", en: "Request a Quote" },
+  pd_close: { ar: "إغلاق", en: "Close" },
+  pd_spec_standard: { ar: "المعيار", en: "Standard" },
+  pd_spec_certification: { ar: "الاعتماد", en: "Certification" },
+  pd_spec_warranty: { ar: "الضمان", en: "Warranty" },
+  pd_spec_origin: { ar: "بلد المنشأ", en: "Country of Origin" },
+  pd_spec_warranty_v: { ar: "سنتان", en: "2 Years" },
+  pd_spec_origin_v: { ar: "أوروبا / آسيا", en: "Europe / Asia" },
+  pd_feat_1: { ar: "جودة عالية ومواد متينة", en: "High quality and durable materials" },
+  pd_feat_2: { ar: "متوافق مع المعايير العالمية", en: "Compliant with global standards" },
+  pd_feat_3: { ar: "تركيب وصيانة بواسطة فريق معتمد", en: "Installation & maintenance by certified team" },
+  pd_feat_4: { ar: "دعم فني على مدار الساعة", en: "24/7 technical support" },
+
   // Clients
   clients_kicker: { ar: "عملاؤنا", en: "Our Clients" },
   clients_title_1: { ar: "موثوقون من", en: "Trusted by" },
