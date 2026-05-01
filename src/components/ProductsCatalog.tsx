@@ -32,11 +32,11 @@ const categories: Category[] = [
     t: "cat_water_t",
     d: "cat_water_d",
     items: [
-      { img: pumpSkid, t: "it_pumpskid_t", d: "it_pumpskid_d" },
-      { img: pumpController, t: "it_pumpctrl_t", d: "it_pumpctrl_d" },
-      { img: sprinkler, t: "it_sprinkler_t", d: "it_sprinkler_d" },
-      { img: nozzle, t: "it_nozzle_t", d: "it_nozzle_d" },
-      { img: siamese, t: "it_siamese_t", d: "it_siamese_d" },
+      { img: pumpSkid, t: "it_pumpskid_t", d: "it_pumpskid_d", gallery: [pumpSkid, pumpController, sprinkler], specs: { standard: "NFPA 20", certification: "UL / FM" } },
+      { img: pumpController, t: "it_pumpctrl_t", d: "it_pumpctrl_d", gallery: [pumpController, pumpSkid], specs: { standard: "NFPA 20", certification: "UL Listed" } },
+      { img: sprinkler, t: "it_sprinkler_t", d: "it_sprinkler_d", gallery: [sprinkler, pumpSkid], specs: { standard: "NFPA 13", certification: "UL / FM" } },
+      { img: nozzle, t: "it_nozzle_t", d: "it_nozzle_d", gallery: [nozzle, siamese], specs: { standard: "NFPA 1964", certification: "UL Listed" } },
+      { img: siamese, t: "it_siamese_t", d: "it_siamese_d", gallery: [siamese, nozzle], specs: { standard: "NFPA 14", certification: "UL / FM" } },
     ],
   },
   {
@@ -44,7 +44,7 @@ const categories: Category[] = [
     t: "cat_detect_t",
     d: "cat_detect_d",
     items: [
-      { img: extinguisher, t: "it_extinguisher_t", d: "it_extinguisher_d" },
+      { img: extinguisher, t: "it_extinguisher_t", d: "it_extinguisher_d", gallery: [extinguisher], specs: { standard: "EN 3-7", certification: "CE / SASO" } },
     ],
   },
   {
@@ -52,8 +52,8 @@ const categories: Category[] = [
     t: "cat_security_t",
     d: "cat_security_d",
     items: [
-      { img: turnstile, t: "it_turnstile_t", d: "it_turnstile_d" },
-      { img: fingerprint, t: "it_fingerprint_t", d: "it_fingerprint_d" },
+      { img: turnstile, t: "it_turnstile_t", d: "it_turnstile_d", gallery: [turnstile, fingerprint], specs: { standard: "IP54", certification: "CE" } },
+      { img: fingerprint, t: "it_fingerprint_t", d: "it_fingerprint_d", gallery: [fingerprint, turnstile], specs: { standard: "ISO/IEC 19794", certification: "CE / FCC" } },
     ],
   },
   {
@@ -61,7 +61,7 @@ const categories: Category[] = [
     t: "cat_ppe_t",
     d: "cat_ppe_d",
     items: [
-      { img: scba, t: "it_scba_t", d: "it_scba_d" },
+      { img: scba, t: "it_scba_t", d: "it_scba_d", gallery: [scba], specs: { standard: "EN 137", certification: "CE" } },
     ],
   },
 ];
