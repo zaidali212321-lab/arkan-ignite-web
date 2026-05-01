@@ -1,0 +1,147 @@
+export const translations = {
+  // Nav
+  nav_home: { ar: "الرئيسية", en: "Home" },
+  nav_about: { ar: "ملف الشركة", en: "Company Profile" },
+  nav_services: { ar: "خدماتنا", en: "Our Services" },
+  nav_products: { ar: "منتجاتنا", en: "Our Products" },
+  nav_clients: { ar: "عملاؤنا", en: "Our Clients" },
+  nav_contact: { ar: "اتصل بنا", en: "Contact Us" },
+  cta_quote: { ar: "احصل على عرض سعر", en: "Get a Quote" },
+
+  // Hero
+  hero_badge: { ar: "أركان الإتقان العربية · خبراء السلامة الصناعية", en: "Arkan Alitqan Arabiya · Industrial Safety Experts" },
+  hero_title_1: { ar: "شركة رائدة في", en: "Leading the field of" },
+  hero_title_2: { ar: "حلول الأمن والسلامة", en: "Industrial Safety" },
+  hero_title_3: { ar: "الصناعية", en: "Solutions" },
+  hero_desc: {
+    ar: "نقدم أحدث أنظمة الإطفاء ومعدات السلامة وفقاً لأعلى المعايير العالمية، مع فريق من الخبراء لخدمة المنشآت الصناعية والتجارية.",
+    en: "We deliver state-of-the-art fire fighting systems and safety equipment, meeting the highest global standards, backed by a team of experts.",
+  },
+  hero_cta1: { ar: "اكتشف خدماتنا", en: "Discover Our Services" },
+  hero_stat_years: { ar: "سنة خبرة", en: "Years Experience" },
+  hero_stat_projects: { ar: "مشروع منجز", en: "Projects Done" },
+  hero_stat_clients: { ar: "عميل موثوق", en: "Trusted Clients" },
+  scroll_label: { ar: "اسحب للأسفل", en: "SCROLL" },
+
+  // About
+  about_kicker: { ar: "من نحن", en: "About Us" },
+  about_title_1: { ar: "شركاء موثوقون في", en: "Trusted Partners in" },
+  about_title_2: { ar: "حماية المنشآت", en: "Facility Protection" },
+  about_desc: {
+    ar: "تأسست أركان الإتقان العربية لتكون الخيار الأول في توفير حلول الأمن والسلامة المتكاملة. نوفر منظومة شاملة من أنظمة الإطفاء، معدات السلامة الشخصية، وخدمات الصيانة الدورية، بمعايير عالمية تواكب أحدث التقنيات.",
+    en: "Arkan Alitqan Arabiya was founded to be the first choice for integrated safety solutions. We provide a complete ecosystem of fire systems, personal safety equipment, and maintenance services to global standards.",
+  },
+  about_point1: { ar: "خبرة تتجاوز 15 عاماً في مجال السلامة", en: "Over 15 years of safety expertise" },
+  about_point2: { ar: "شركاء معتمدون لكبرى الشركات العالمية", en: "Authorized partners of global brands" },
+  about_point3: { ar: "فريق مهندسين وفنيين مؤهلين", en: "Certified engineers and technicians" },
+  about_point4: { ar: "خدمة على مدار الساعة", en: "24/7 dedicated support" },
+  about_cta: { ar: "تعرف على خدماتنا", en: "Explore Our Services" },
+  about_stat_label: { ar: "سنة من الخبرة", en: "Years of Experience" },
+  about_certified: { ar: "معتمدون من", en: "Certified by" },
+  learn_more: { ar: "اقرأ المزيد", en: "Learn More" },
+  view_all: { ar: "عرض الكل", en: "View All" },
+
+  // Why us
+  whyus_kicker: { ar: "قيمنا", en: "Our Values" },
+  whyus_title_1: { ar: "لماذا", en: "Why" },
+  whyus_title_2: { ar: "تختارنا؟", en: "Choose Us?" },
+  whyus_desc: {
+    ar: "نتميز بمجموعة من القيم والمبادئ التي تجعلنا الخيار الأمثل للشركات الرائدة.",
+    en: "Our values and principles make us the ideal choice for leading enterprises.",
+  },
+  why1_t: { ar: "الالتزام بالجودة", en: "Quality Commitment" },
+  why1_d: { ar: "تطبيق أعلى معايير الجودة والمواصفات الفنية العالمية في كل مشروع.", en: "We apply the highest quality and technical standards on every project." },
+  why2_t: { ar: "النزاهة والشفافية", en: "Integrity & Transparency" },
+  why2_d: { ar: "نلتزم بأعلى مستويات النزاهة والشفافية في جميع تعاملاتنا المهنية.", en: "We uphold the highest standards of integrity in all our dealings." },
+  why3_t: { ar: "الابتكار والإبداع", en: "Innovation" },
+  why3_d: { ar: "تقديم حلول مبتكرة ومتطورة باستمرار لتلبية احتياجات عملائنا.", en: "Constantly delivering innovative, advanced solutions for our clients." },
+  why4_t: { ar: "فريق من الخبراء", en: "Expert Team" },
+  why4_d: { ar: "نخبة من المهندسين والفنيين المؤهلين بأعلى الشهادات المهنية.", en: "Elite engineers and technicians with top professional certifications." },
+
+  // Services
+  services_kicker: { ar: "خدماتنا", en: "Our Services" },
+  services_title_1: { ar: "حلول متكاملة", en: "Integrated Solutions" },
+  services_title_2: { ar: "للسلامة الصناعية", en: "for Industrial Safety" },
+  services_desc: {
+    ar: "نقدم باقة متنوعة من الخدمات المتخصصة لتلبية كافة احتياجات عملائنا في مجال الأمن والسلامة.",
+    en: "A diverse portfolio of specialized services covering every safety and security need.",
+  },
+  s1_t: { ar: "خدمات قسم المبيعات", en: "Sales Department" },
+  s1_d: { ar: "توريد كامل لأنظمة الإطفاء ومعدات السلامة من أفضل الماركات العالمية المعتمدة.", en: "Full supply of fire systems and safety equipment from the world's top certified brands." },
+  s2_t: { ar: "خدمات القسم الهندسي", en: "Engineering Department" },
+  s2_d: { ar: "تصميم وتنفيذ أنظمة السلامة والإطفاء المتكاملة وفق دراسات هندسية دقيقة.", en: "Design and execution of integrated safety and fire systems with precise engineering studies." },
+  s3_t: { ar: "التشغيل والصيانة", en: "Operation & Maintenance" },
+  s3_d: { ar: "خدمات صيانة دورية وطارئة على مدار الساعة لضمان جاهزية كاملة لأنظمتك.", en: "Periodic and emergency maintenance services 24/7 to keep your systems fully operational." },
+  s_request: { ar: "اطلب الخدمة", en: "Request Service" },
+  tag_supply: { ar: "توريد معتمد", en: "Certified Supply" },
+  tag_warranty: { ar: "ضمان أصلي", en: "Genuine Warranty" },
+  tag_price: { ar: "أسعار تنافسية", en: "Competitive Pricing" },
+  tag_design: { ar: "تصميم متخصص", en: "Specialized Design" },
+  tag_studies: { ar: "دراسات فنية", en: "Technical Studies" },
+  tag_supervision: { ar: "إشراف ميداني", en: "On-Site Supervision" },
+  tag_24_7: { ar: "24/7", en: "24/7" },
+  tag_periodic: { ar: "صيانة دورية", en: "Periodic Maintenance" },
+  tag_team: { ar: "فريق مختص", en: "Specialized Team" },
+
+  // Products
+  products_kicker: { ar: "منتجاتنا", en: "Our Products" },
+  products_title_1: { ar: "تشكيلة واسعة من", en: "A Wide Range of" },
+  products_title_2: { ar: "منتجات السلامة", en: "Safety Products" },
+  p1_t: { ar: "أنظمة الإطفاء بالماء", en: "Water Fire Systems" },
+  p1_d: { ar: "أنظمة الرشاشات والمضخات وشبكات الإطفاء المتكاملة.", en: "Sprinklers, pumps, and integrated fire networks." },
+  p2_t: { ar: "طفايات الحريق", en: "Fire Extinguishers" },
+  p2_d: { ar: "طفايات معتمدة بمختلف الأنواع والأحجام للاستخدامات كافة.", en: "Certified extinguishers in all types and sizes." },
+  p3_t: { ar: "أنظمة الإنذار والكشف", en: "Detection & Alarm" },
+  p3_d: { ar: "أنظمة كشف الدخان والحريق المتقدمة بأحدث التقنيات.", en: "Advanced smoke and fire detection systems." },
+  p4_t: { ar: "معدات السلامة الشخصية", en: "Personal Safety" },
+  p4_d: { ar: "خوذات، قفازات، ملابس واقية ومعدات تنفس عالية الجودة.", en: "Helmets, gloves, protective clothing, and high-quality breathing apparatus." },
+  p_inquire: { ar: "استفسر الآن", en: "Inquire Now" },
+
+  // Clients
+  clients_kicker: { ar: "عملاؤنا", en: "Our Clients" },
+  clients_title_1: { ar: "موثوقون من", en: "Trusted by" },
+  clients_title_2: { ar: "قبل الأفضل", en: "the Best" },
+  clients_desc: { ar: "نعتز بثقة كبرى الشركات والجهات الحكومية والصناعية في المملكة.", en: "We take pride in the trust of major corporations and government entities across the Kingdom." },
+
+  // Contact
+  contact_kicker: { ar: "اتصل بنا", en: "Contact Us" },
+  contact_title_1: { ar: "هل أنت جاهز", en: "Ready to" },
+  contact_title_2: { ar: "لرفع مستوى السلامة؟", en: "Upgrade Your Safety?" },
+  contact_desc: {
+    ar: "تواصل مع فريق الخبراء لدينا للحصول على استشارة مجانية أو عرض سعر مخصص لمشروعك.",
+    en: "Reach our expert team for a free consultation or a tailored quote for your project.",
+  },
+  contact_address_l: { ar: "العنوان", en: "Address" },
+  contact_address_v: { ar: "الرياض، المملكة العربية السعودية", en: "Riyadh, Saudi Arabia" },
+  contact_phone_l: { ar: "الهاتف", en: "Phone" },
+  contact_email_l: { ar: "البريد", en: "Email" },
+  contact_hours_l: { ar: "ساعات العمل", en: "Hours" },
+  contact_hours_v: { ar: "الأحد - الخميس · 8 ص - 5 م", en: "Sun - Thu · 8 AM - 5 PM" },
+  form_title: { ar: "نموذج التواصل", en: "Contact Form" },
+  form_name: { ar: "الاسم الكامل", en: "Full Name" },
+  form_email: { ar: "البريد الإلكتروني", en: "Email Address" },
+  form_phone: { ar: "رقم الهاتف", en: "Phone Number" },
+  form_subject: { ar: "الموضوع", en: "Subject" },
+  form_message: { ar: "رسالتك", en: "Your Message" },
+  form_subject_quote: { ar: "طلب عرض سعر", en: "Quote Request" },
+  form_subject_inquiry: { ar: "استفسار عن خدمة", en: "Service Inquiry" },
+  form_subject_maintenance: { ar: "صيانة وتشغيل", en: "Maintenance & Operation" },
+  form_subject_other: { ar: "أخرى", en: "Other" },
+  form_send: { ar: "إرسال الرسالة", en: "Send Message" },
+  form_success: { ar: "تم إرسال رسالتك بنجاح، سنتواصل معك قريباً", en: "Your message has been sent. We'll be in touch soon." },
+
+  // Footer
+  footer_desc: {
+    ar: "أركان الإتقان العربية - شركة رائدة في حلول الأمن والسلامة الصناعية ومكافحة الحرائق في المملكة العربية السعودية.",
+    en: "Arkan Alitqan Arabiya - a leading company in industrial safety and fire fighting solutions in Saudi Arabia.",
+  },
+  footer_quick: { ar: "روابط سريعة", en: "Quick Links" },
+  footer_contact: { ar: "تواصل", en: "Contact" },
+  footer_rights: { ar: "© 2026 أركان الإتقان العربية. جميع الحقوق محفوظة.", en: "© 2026 Arkan Alitqan Arabiya. All rights reserved." },
+
+  // CTA banner
+  cta_banner_title: { ar: "حماية منشأتك تبدأ بمكالمة واحدة", en: "Protecting Your Facility Starts With One Call" },
+  cta_banner_desc: { ar: "تواصل معنا اليوم لاستشارة مجانية وحلول مخصصة.", en: "Contact us today for a free consultation and tailored solutions." },
+} as const;
+
+export type TranslationKey = keyof typeof translations;

@@ -1,91 +1,110 @@
 import { useEffect, useState } from "react";
-import { Search, Menu, X } from "lucide-react";
+import { Search, Menu, X, Globe } from "lucide-react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useLang } from "@/i18n/LanguageContext";
 import logo from "@/assets/logo.png";
 
 const links = [
-  { href: "#home", ar: "الرئيسية", en: "Home" },
-  { href: "#about", ar: "ملف الشركة", en: "About" },
-  { href: "#services", ar: "خدماتنا", en: "Services" },
-  { href: "#products", ar: "منتجاتنا", en: "Products" },
-  { href: "#clients", ar: "عملاؤنا", en: "Clients" },
-  { href: "#contact", ar: "اتصل بنا", en: "Contact" },
+  { to: "/", key: "nav_home" as const },
+  { to: "/about", key: "nav_about" as const },
+  { to: "/services", key: "nav_services" as const },
+  { to: "/products", key: "nav_products" as const },
+  { to: "/clients", key: "nav_clients" as const },
+  { to: "/contact", key: "nav_contact" as const },
 ];
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("#home");
+  const { t, lang, toggle, dir } = useLang();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 30);
-      const sections = links.map((l) => document.querySelector(l.href));
-      sections.forEach((s, i) => {
-        if (s) {
-          const rect = (s as HTMLElement).getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom >= 120) setActive(links[i].href);
-        }
-      });
-    };
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll);
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => setOpen(false), [location.pathname]);
+
+  const overDark = isHome && !scrolled;
 
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-background/85 backdrop-blur-xl border-b border-border shadow-card"
-          : "bg-transparent"
+          : isHome
+          ? "bg-transparent"
+          : "bg-background/85 backdrop-blur-xl border-b border-border"
       }`}
     >
-      <nav className="container flex items-center justify-between h-20" dir="rtl">
-        <a href="#home" className="flex items-center gap-3 group">
-          <img src={logo} alt="Arkan Alitqan Arabiya" className="h-12 w-auto transition-transform group-hover:scale-105" />
-        </a>
+      <nav className="container flex items-center justify-between h-20" dir={dir}>
+        <Link to="/" className="flex items-center gap-3 group">
+          <img src={logo} alt="Arkan Alitqan Arabiya" className="h-12 w-auto transition-transform group-hover:scale-105" style={{ background: "transparent" }} />
+        </Link>
 
         <ul className="hidden lg:flex items-center gap-1">
           {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className={`relative px-4 py-2 text-sm font-semibold rounded-full transition-colors ${
-                  active === l.href
-                    ? "text-primary"
-                    : scrolled
-                    ? "text-foreground hover:text-primary"
-                    : "text-white hover:text-primary-glow"
-                }`}
+            <li key={l.to}>
+              <NavLink
+                to={l.to}
+                end={l.to === "/"}
+                className={({ isActive }) =>
+                  `relative px-4 py-2 text-sm font-semibold rounded-full transition-colors ${
+                    isActive
+                      ? "text-primary"
+                      : overDark
+                      ? "text-white hover:text-primary-glow"
+                      : "text-foreground hover:text-primary"
+                  }`
+                }
               >
-                {l.ar}
-                {active === l.href && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary" />
+                {({ isActive }) => (
+                  <>
+                    {t(l.key)}
+                    {isActive && (
+                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary" />
+                    )}
+                  </>
                 )}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-2">
           <button
+            onClick={toggle}
+            aria-label="Toggle language"
+            className={`hidden sm:inline-flex items-center gap-1.5 h-10 px-3 rounded-full border text-xs font-bold tracking-wider transition-colors ${
+              overDark
+                ? "border-white/30 text-white hover:bg-white/10"
+                : "border-border text-foreground hover:bg-secondary"
+            }`}
+          >
+            <Globe className="h-3.5 w-3.5" />
+            {lang === "ar" ? "EN" : "AR"}
+          </button>
+          <button
             aria-label="Search"
             className={`hidden sm:grid place-items-center h-10 w-10 rounded-full border transition-colors ${
-              scrolled
-                ? "border-border text-foreground hover:bg-secondary"
-                : "border-white/30 text-white hover:bg-white/10"
+              overDark
+                ? "border-white/30 text-white hover:bg-white/10"
+                : "border-border text-foreground hover:bg-secondary"
             }`}
           >
             <Search className="h-4 w-4" />
           </button>
           <Button variant="hero" size="sm" className="hidden sm:inline-flex" asChild>
-            <a href="#contact">احصل على عرض سعر</a>
+            <Link to="/contact">{t("cta_quote")}</Link>
           </Button>
           <button
             aria-label="Menu"
-            className={`lg:hidden grid place-items-center h-10 w-10 rounded-full ${
-              scrolled ? "text-foreground" : "text-white"
-            }`}
+            className={`lg:hidden grid place-items-center h-10 w-10 rounded-full ${overDark ? "text-white" : "text-foreground"}`}
             onClick={() => setOpen(!open)}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -94,21 +113,32 @@ export const Navbar = () => {
       </nav>
 
       {open && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border" dir="rtl">
+        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border" dir={dir}>
           <ul className="container py-4 flex flex-col gap-1">
             {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block px-4 py-3 rounded-lg hover:bg-secondary text-foreground font-semibold"
+              <li key={l.to}>
+                <NavLink
+                  to={l.to}
+                  end={l.to === "/"}
+                  className={({ isActive }) =>
+                    `block px-4 py-3 rounded-lg font-semibold ${
+                      isActive ? "bg-primary/10 text-primary" : "text-foreground hover:bg-secondary"
+                    }`
+                  }
                 >
-                  {l.ar}
-                </a>
+                  {t(l.key)}
+                </NavLink>
               </li>
             ))}
+            <button
+              onClick={toggle}
+              className="mt-2 px-4 py-3 rounded-lg border border-border font-bold tracking-wider text-sm flex items-center gap-2"
+            >
+              <Globe className="h-4 w-4" />
+              {lang === "ar" ? "English" : "العربية"}
+            </button>
             <Button variant="hero" className="mt-2" asChild>
-              <a href="#contact" onClick={() => setOpen(false)}>احصل على عرض سعر</a>
+              <Link to="/contact">{t("cta_quote")}</Link>
             </Button>
           </ul>
         </div>
