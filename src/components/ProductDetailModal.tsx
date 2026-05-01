@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { X, Check, ShieldCheck, Award, Globe, Wrench } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
+import { ProductQuoteForm } from "@/components/ProductQuoteForm";
 
 export type ProductDetail = {
   t: TranslationKey;
