@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { Intro } from "@/components/Intro";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import Index from "./pages/Index.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import ServicesPage from "./pages/ServicesPage.tsx";
@@ -22,6 +23,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <Intro />
+        <SmoothScroll />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
