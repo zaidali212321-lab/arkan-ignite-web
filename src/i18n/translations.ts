@@ -144,6 +144,22 @@ export const translations = {
   pd_feat_3: { ar: "تركيب وصيانة بواسطة فريق معتمد", en: "Installation & maintenance by certified team" },
   pd_feat_4: { ar: "دعم فني على مدار الساعة", en: "24/7 technical support" },
 
+  // Product quote form
+  pdq_title: { ar: "طلب عرض سعر سريع", en: "Quick Quote Request" },
+  pdq_product: { ar: "المنتج", en: "Product" },
+  pdq_name: { ar: "الاسم الكامل", en: "Full Name" },
+  pdq_email: { ar: "البريد الإلكتروني", en: "Email" },
+  pdq_phone: { ar: "رقم الهاتف", en: "Phone" },
+  pdq_qty: { ar: "الكمية", en: "Quantity" },
+  pdq_notes: { ar: "ملاحظات إضافية", en: "Additional Notes" },
+  pdq_submit: { ar: "إرسال الطلب", en: "Send Request" },
+  pdq_success: { ar: "تم استلام طلبك، سنتواصل معك قريباً.", en: "Request received. We'll contact you shortly." },
+  pdq_err_name: { ar: "الاسم مطلوب (2-100 حرف)", en: "Name required (2-100 chars)" },
+  pdq_err_email: { ar: "بريد إلكتروني غير صالح", en: "Invalid email address" },
+  pdq_err_phone: { ar: "رقم هاتف غير صالح", en: "Invalid phone number" },
+  pdq_err_qty: { ar: "الكمية يجب أن تكون 1 أو أكثر", en: "Quantity must be 1 or more" },
+  pdq_err_notes: { ar: "الملاحظات أقل من 1000 حرف", en: "Notes must be under 1000 characters" },
+
   // Clients
   clients_kicker: { ar: "عملاؤنا", en: "Our Clients" },
   clients_title_1: { ar: "موثوقون من", en: "Trusted by" },
