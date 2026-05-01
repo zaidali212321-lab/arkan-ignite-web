@@ -69,6 +69,18 @@ const categories: Category[] = [
 export const ProductsCatalog = () => {
   const { t, dir } = useLang();
   const rootRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState<ProductDetail | null>(null);
+  const [open, setOpen] = useState(false);
+
+  const openItem = (item: Item) => {
+    setActive({
+      t: item.t,
+      d: item.d,
+      images: item.gallery && item.gallery.length ? item.gallery : [item.img],
+      specs: item.specs,
+    });
+    setOpen(true);
+  };
 
   useEffect(() => {
     if (!rootRef.current) return;
@@ -146,7 +158,16 @@ export const ProductsCatalog = () => {
                 <article
                   key={p.t}
                   data-prod-card
-                  className="group relative rounded-3xl overflow-hidden bg-card border border-border shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2"
+                  onClick={() => openItem(p)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openItem(p);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  className="group relative cursor-pointer rounded-3xl overflow-hidden bg-card border border-border shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-primary"
                   style={{ perspective: "1200px" }}
                 >
                   <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-secondary via-background to-secondary/60">
@@ -166,11 +187,9 @@ export const ProductsCatalog = () => {
                       {t(p.d)}
                     </p>
                     <div className="h-px bg-border my-4" />
-                    <Button asChild variant="ghost" size="sm" className="px-0 hover:bg-transparent">
-                      <Link to="/contact" className="text-primary font-bold tracking-wider text-xs">
-                        {t("p_inquire")} →
-                      </Link>
-                    </Button>
+                    <span className="text-primary font-bold tracking-wider text-xs">
+                      {t("learn_more")} →
+                    </span>
                   </div>
                 </article>
               ))}
@@ -178,6 +197,7 @@ export const ProductsCatalog = () => {
           </div>
         </section>
       ))}
+      <ProductDetailModal product={active} open={open} onOpenChange={setOpen} />
     </div>
   );
 };
