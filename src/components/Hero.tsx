@@ -146,8 +146,15 @@ export const Hero = () => {
         </div>
 
         {/* Extinguisher */}
-        <div className="relative h-[500px] lg:h-[600px] flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-radial-red blur-3xl" />
+        <div
+          ref={stageRef}
+          className="relative h-[500px] lg:h-[600px] flex items-center justify-center [perspective:1400px]"
+          style={{ ['--scroll' as never]: 0 }}
+        >
+          <div
+            className="absolute inset-0 bg-gradient-radial-red blur-3xl transition-opacity"
+            style={{ opacity: `calc(1 - var(--scroll) * 0.6)` }}
+          />
           <div className="absolute h-72 w-72 rounded-full bg-primary/20 blur-2xl animate-pulse-glow" />
           <img
             ref={imgRef}
@@ -155,7 +162,8 @@ export const Hero = () => {
             alt="Fire extinguisher"
             width={1024}
             height={1024}
-            className="relative h-full w-auto object-contain drop-shadow-[0_30px_60px_rgba(220,38,38,0.5)] animate-hero-in animate-float-extinguisher transition-transform duration-300 ease-out"
+            style={{ willChange: "transform" }}
+            className="relative h-full w-auto object-contain drop-shadow-[0_30px_60px_rgba(220,38,38,0.5)] animate-hero-in"
           />
           {/* spec ring */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 h-2 w-64 bg-primary/40 blur-xl rounded-full" />
