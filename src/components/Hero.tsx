@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
+import { MagneticButton } from "@/components/MagneticButton";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import extinguisher from "@/assets/extinguisher.png";
@@ -143,9 +144,9 @@ export const Hero = () => {
                 <Arrow className={`h-4 w-4 transition-transform ${lang === "ar" ? "mr-2 group-hover:-translate-x-1" : "ml-2 group-hover:translate-x-1"}`} />
               </Link>
             </Button>
-            <Button variant="outlineLight" size="xl" asChild>
+            <MagneticButton variant="outlineLight" size="xl" asChild>
               <Link to="/contact">{t("cta_quote")}</Link>
-            </Button>
+            </MagneticButton>
           </div>
 
           <div className="hero-anim flex gap-8 pt-6 border-t border-dark-border">
