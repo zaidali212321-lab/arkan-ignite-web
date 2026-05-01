@@ -1,15 +1,17 @@
 import { useReveal } from "@/hooks/use-reveal";
+import { useLang } from "@/i18n/LanguageContext";
 
 const clients = ["Cyan", "Panda", "FedEx", "Saudi Aramco", "SABIC", "NEOM", "STC", "Almarai", "Maaden", "Nesma"];
 
 export const Clients = () => {
   const ref = useReveal();
+  const { t, dir } = useLang();
   return (
-    <section id="clients" ref={ref as any} dir="rtl" className="py-24 bg-background border-y border-border overflow-hidden">
+    <section id="clients" ref={ref as any} dir={dir} className="py-24 bg-background border-y border-border overflow-hidden">
       <div className="container text-center mb-12">
-        <span className="reveal inline-block text-xs font-bold tracking-[0.3em] text-primary uppercase">عملاؤنا</span>
+        <span className="reveal inline-block text-xs font-bold tracking-[0.3em] text-primary uppercase">{t("clients_kicker")}</span>
         <h2 className="reveal reveal-delay-1 font-display text-4xl md:text-5xl mt-4">
-          موثوقون من <span className="text-gradient">قبل الأفضل</span>
+          {t("clients_title_1")} <span className="text-gradient">{t("clients_title_2")}</span>
         </h2>
       </div>
 
