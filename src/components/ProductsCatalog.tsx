@@ -1,10 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
+import { ProductDetailModal, type ProductDetail } from "@/components/ProductDetailModal";
 
 import extinguisher from "@/assets/products/extinguisher.png";
 import pumpSkid from "@/assets/products/pump-skid.png";
@@ -18,7 +17,13 @@ import fingerprint from "@/assets/products/fingerprint.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Item = { img: string; t: TranslationKey; d: TranslationKey };
+type Item = {
+  img: string;
+  t: TranslationKey;
+  d: TranslationKey;
+  gallery?: string[];
+  specs?: { standard?: string; certification?: string };
+};
 type Category = { id: string; t: TranslationKey; d: TranslationKey; items: Item[] };
 
 const categories: Category[] = [
