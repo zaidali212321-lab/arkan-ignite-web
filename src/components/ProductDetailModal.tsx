@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { X, Check, ShieldCheck, Award, Globe, Wrench } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
+import { ProductQuoteForm } from "@/components/ProductQuoteForm";
 
 export type ProductDetail = {
   t: TranslationKey;
@@ -24,9 +24,13 @@ export const ProductDetailModal = ({
 }) => {
   const { t, dir } = useLang();
   const [activeImg, setActiveImg] = useState(0);
+  const [showQuote, setShowQuote] = useState(false);
 
   useEffect(() => {
-    if (open) setActiveImg(0);
+    if (open) {
+      setActiveImg(0);
+      setShowQuote(false);
+    }
   }, [open, product]);
 
   if (!product) return null;
@@ -119,11 +123,19 @@ export const ProductDetailModal = ({
             </div>
 
             <div className="mt-auto pt-8">
-              <Button asChild size="lg" className="w-full">
-                <Link to="/contact" onClick={() => onOpenChange(false)}>
+              {!showQuote ? (
+                <Button size="lg" className="w-full" onClick={() => setShowQuote(true)}>
                   {t("pd_request_quote")}
-                </Link>
-              </Button>
+                </Button>
+              ) : (
+                <div className="rounded-2xl border border-border bg-secondary/30 p-5">
+                  <h3 className="font-display text-lg mb-4">{t("pdq_title")}</h3>
+                  <ProductQuoteForm
+                    productName={t(product.t)}
+                    onSuccess={() => onOpenChange(false)}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
