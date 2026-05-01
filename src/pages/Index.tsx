@@ -1,5 +1,5 @@
 import { Hero } from "@/components/Hero";
-import { Cinematic3DSection } from "@/components/Cinematic3DSection";
+// import { Cinematic3DSection } from "@/components/Cinematic3DSection"; // 3D scene available; re-enable when WebGL stack is verified
 import { About } from "@/components/About";
 import { WhyUs } from "@/components/WhyUs";
 import { Services } from "@/components/Services";
@@ -11,7 +11,7 @@ import { PageLayout } from "@/components/PageLayout";
 const Index = () => (
   <PageLayout>
     <Hero />
-    <Cinematic3DSection />
+    {/* <Cinematic3DSection /> */}
     <About compact />
     <WhyUs />
     <Services compact />
