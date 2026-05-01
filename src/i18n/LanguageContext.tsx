@@ -15,7 +15,7 @@ const LanguageContext = createContext<Ctx | null>(null);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [lang, setLangState] = useState<Lang>(() => (localStorage.getItem("lang") as Lang) || "ar");
-  const dir = lang === "ar" ? "rtl" : "ltr";
+  const dir: "rtl" | "ltr" = lang === "ar" ? "rtl" : "ltr";
 
   useEffect(() => {
     document.documentElement.lang = lang;
