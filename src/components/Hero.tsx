@@ -7,22 +7,77 @@ import heroBg from "@/assets/hero-bg.jpg";
 export const Hero = () => {
   const imgRef = useRef<HTMLImageElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const mouseRef = useRef({ x: 0, y: 0 });
+  const scrollRef = useRef(0); // 0..1 hero scroll progress
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      if (!imgRef.current || !wrapRef.current) return;
-      const rect = wrapRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      imgRef.current.style.transform = `perspective(1200px) rotateY(${x * 18}deg) rotateX(${-y * 14}deg) translateZ(0)`;
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+    let cx = 0, cy = 0, cs = 0; // current eased values
+
+    const render = () => {
+      const tx = mouseRef.current.x;
+      const ty = mouseRef.current.y;
+      const ts = scrollRef.current;
+      cx = lerp(cx, tx, 0.08);
+      cy = lerp(cy, ty, 0.08);
+      cs = lerp(cs, ts, 0.1);
+
+      if (imgRef.current) {
+        // Scroll-driven transforms (mimic drinksom.eu)
+        const rotZ = cs * 28;            // tilt as user scrolls
+        const rotYScroll = cs * -18;     // perspective shift
+        const translateY = cs * 140;     // drift down
+        const translateX = cs * -40;     // drift sideways
+        const scale = 1 - cs * 0.15;     // recede slightly
+
+        // Mouse parallax (additive)
+        const rotY = cx * 18 + rotYScroll;
+        const rotX = -cy * 14;
+
+        imgRef.current.style.transform = `perspective(1200px) translate3d(${translateX}px, ${translateY}px, 0) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${scale})`;
+      }
+
+      if (stageRef.current) {
+        // Counter-parallax glow
+        stageRef.current.style.setProperty("--scroll", String(cs));
+      }
+
+      rafRef.current = requestAnimationFrame(render);
     };
+
+    const onMove = (e: MouseEvent) => {
+      if (!wrapRef.current) return;
+      const rect = wrapRef.current.getBoundingClientRect();
+      mouseRef.current.x = (e.clientX - rect.left) / rect.width - 0.5;
+      mouseRef.current.y = (e.clientY - rect.top) / rect.height - 0.5;
+    };
+    const onLeave = () => {
+      mouseRef.current.x = 0;
+      mouseRef.current.y = 0;
+    };
+    const onScroll = () => {
+      if (!wrapRef.current) return;
+      const rect = wrapRef.current.getBoundingClientRect();
+      const h = rect.height || window.innerHeight;
+      // progress: 0 when hero top at viewport top, 1 when scrolled one hero-height
+      const p = Math.min(1, Math.max(0, -rect.top / h));
+      scrollRef.current = p;
+    };
+
     const el = wrapRef.current;
     el?.addEventListener("mousemove", onMove);
-    el?.addEventListener("mouseleave", () => {
-      if (imgRef.current) imgRef.current.style.transform = "";
-    });
+    el?.addEventListener("mouseleave", onLeave);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    rafRef.current = requestAnimationFrame(render);
+
     return () => {
       el?.removeEventListener("mousemove", onMove);
+      el?.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
