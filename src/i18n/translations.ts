@@ -117,6 +117,8 @@ export const translations = {
   contact_email_l: { ar: "البريد", en: "Email" },
   contact_hours_l: { ar: "ساعات العمل", en: "Hours" },
   contact_hours_v: { ar: "الأحد - الخميس · 8 ص - 5 م", en: "Sun - Thu · 8 AM - 5 PM" },
+  contact_map_title: { ar: "موقعنا على الخريطة", en: "Find Us on the Map" },
+  contact_open_maps: { ar: "افتح في خرائط جوجل", en: "Open in Google Maps" },
   form_title: { ar: "نموذج التواصل", en: "Contact Form" },
   form_name: { ar: "الاسم الكامل", en: "Full Name" },
   form_email: { ar: "البريد الإلكتروني", en: "Email Address" },
