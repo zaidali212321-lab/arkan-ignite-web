@@ -24,9 +24,13 @@ export const ProductDetailModal = ({
 }) => {
   const { t, dir } = useLang();
   const [activeImg, setActiveImg] = useState(0);
+  const [showQuote, setShowQuote] = useState(false);
 
   useEffect(() => {
-    if (open) setActiveImg(0);
+    if (open) {
+      setActiveImg(0);
+      setShowQuote(false);
+    }
   }, [open, product]);
 
   if (!product) return null;
