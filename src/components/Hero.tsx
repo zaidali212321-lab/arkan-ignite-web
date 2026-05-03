@@ -120,8 +120,8 @@ export const Hero = () => {
         <div className="absolute -left-32 top-1/3 h-[600px] w-[600px] bg-gradient-radial-red blur-3xl animate-pulse-glow" />
       </div>
 
-      <div className="relative container pt-40 pb-20 grid lg:grid-cols-2 gap-12 items-center min-h-screen">
-        <div className="space-y-8">
+      <div className="relative container pt-40 pb-20 flex items-center justify-center min-h-screen">
+        <div className="space-y-8 max-w-3xl text-center mx-auto">
           <span className="hero-anim inline-flex items-center gap-2 px-4 py-2 rounded-full border border-dark-border bg-dark-muted/50 backdrop-blur text-xs font-semibold tracking-wide">
             <Sparkles className="h-3.5 w-3.5 text-primary-glow" />
             {t("hero_badge")}
@@ -135,9 +135,9 @@ export const Hero = () => {
             {t("hero_title_3")}
           </h1>
 
-          <p className="hero-anim text-lg text-dark-foreground/70 max-w-lg leading-relaxed">{t("hero_desc")}</p>
+          <p className="hero-anim text-lg text-dark-foreground/70 max-w-2xl mx-auto leading-relaxed">{t("hero_desc")}</p>
 
-          <div className="hero-anim flex flex-wrap gap-4">
+          <div className="hero-anim flex flex-wrap gap-4 justify-center">
             <Button variant="hero" size="xl" asChild>
               <Link to="/services" className="group">
                 {t("hero_cta1")}
@@ -149,7 +149,7 @@ export const Hero = () => {
             </MagneticButton>
           </div>
 
-          <div className="hero-anim flex gap-8 pt-6 border-t border-dark-border">
+          <div className="hero-anim flex gap-8 pt-6 border-t border-dark-border justify-center">
             <div>
               <div className="font-display text-3xl text-primary-glow">+15</div>
               <div className="text-xs text-dark-foreground/60 mt-1">{t("hero_stat_years")}</div>
@@ -163,25 +163,6 @@ export const Hero = () => {
               <div className="text-xs text-dark-foreground/60 mt-1">{t("hero_stat_clients")}</div>
             </div>
           </div>
-        </div>
-
-        <div
-          ref={stageRef}
-          className="relative h-[500px] lg:h-[600px] flex items-center justify-center [perspective:1400px]"
-          style={{ ['--scroll' as never]: 0 }}
-        >
-          <div className="absolute inset-0 bg-gradient-radial-red blur-3xl transition-opacity" style={{ opacity: `calc(1 - var(--scroll) * 0.6)` }} />
-          <div className="absolute h-72 w-72 rounded-full bg-primary/20 blur-2xl animate-pulse-glow" />
-          <img
-            ref={imgRef}
-            src={extinguisher}
-            alt="Fire extinguisher"
-            width={1024}
-            height={1024}
-            style={{ willChange: "transform" }}
-            className="relative h-full w-auto object-contain drop-shadow-[0_30px_60px_rgba(220,38,38,0.5)] animate-hero-in"
-          />
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 h-2 w-64 bg-primary/40 blur-xl rounded-full" />
         </div>
       </div>
 

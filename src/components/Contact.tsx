@@ -1,6 +1,6 @@
 import { useReveal } from "@/hooks/use-reveal";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Instagram } from "lucide-react";
 import { toast } from "sonner";
 import { FormEvent } from "react";
 import { useLang } from "@/i18n/LanguageContext";
@@ -14,10 +14,12 @@ export const Contact = () => {
     (e.target as HTMLFormElement).reset();
   };
 
-  const contacts = [
+  const contacts: { icon: any; label: string; value: string; href?: string }[] = [
     { icon: MapPin, label: t("contact_address_l"), value: t("contact_address_v") },
-    { icon: Phone, label: t("contact_phone_l"), value: "+966 11 234 5678" },
-    { icon: Mail, label: t("contact_email_l"), value: "info@arkanalitqan.com" },
+    { icon: Phone, label: "WhatsApp", value: "+966 58 053 5332", href: "https://wa.me/966580535332" },
+    { icon: Phone, label: "WhatsApp", value: "+966 56 860 3766", href: "https://wa.me/966568603766" },
+    { icon: Instagram, label: "Instagram", value: "@arkan_alitqan.ksa", href: "https://www.instagram.com/arkan_alitqan.ksa" },
+    { icon: Mail, label: t("contact_email_l"), value: "info@arkanalitqan.com", href: "mailto:info@arkanalitqan.com" },
     { icon: Clock, label: t("contact_hours_l"), value: t("contact_hours_v") },
   ];
 
@@ -34,17 +36,24 @@ export const Contact = () => {
           <p className="reveal reveal-delay-2 text-dark-foreground/70 max-w-md leading-relaxed">{t("contact_desc")}</p>
 
           <div className="reveal reveal-delay-3 space-y-4">
-            {contacts.map((c) => (
-              <div key={c.label} className="flex items-center gap-4 p-4 rounded-xl bg-dark-muted/50 border border-dark-border hover:border-primary/50 transition-colors">
-                <div className="h-12 w-12 rounded-xl bg-gradient-primary grid place-items-center flex-shrink-0">
-                  <c.icon className="h-5 w-5 text-white" />
+            {contacts.map((c, idx) => {
+              const inner = (
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-dark-muted/50 border border-dark-border hover:border-primary/50 transition-colors">
+                  <div className="h-12 w-12 rounded-xl bg-gradient-primary grid place-items-center flex-shrink-0">
+                    <c.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-dark-foreground/60">{c.label}</div>
+                    <div className="font-semibold">{c.value}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-xs text-dark-foreground/60">{c.label}</div>
-                  <div className="font-semibold">{c.value}</div>
-                </div>
-              </div>
-            ))}
+              );
+              return c.href ? (
+                <a key={idx} href={c.href} target="_blank" rel="noopener noreferrer" className="block">{inner}</a>
+              ) : (
+                <div key={idx}>{inner}</div>
+              );
+            })}
           </div>
         </div>
 

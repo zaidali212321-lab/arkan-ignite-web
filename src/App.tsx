@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { Intro } from "@/components/Intro";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import Index from "./pages/Index.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import ServicesPage from "./pages/ServicesPage.tsx";
@@ -24,6 +25,7 @@ const App = () => (
         <Sonner />
         <Intro />
         <SmoothScroll />
+        <FloatingWhatsApp />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
