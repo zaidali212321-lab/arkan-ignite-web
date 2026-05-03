@@ -2,9 +2,9 @@ import { useLang } from "@/i18n/LanguageContext";
 import { useReveal } from "@/hooks/use-reveal";
 import { MapPin, ExternalLink } from "lucide-react";
 
-const MAPS_URL = "https://maps.app.goo.gl/nSudX8dXnpfQ12ZD7";
+const MAPS_URL = "https://www.google.com/maps?q=21.543414,39.204645";
 const EMBED_URL =
-  "https://www.google.com/maps?q=Riyadh,Saudi%20Arabia&output=embed";
+  "https://www.google.com/maps?q=21.543414,39.204645&z=17&output=embed";
 
 export const ContactMap = () => {
   const { t, dir } = useLang();
