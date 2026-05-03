@@ -1,10 +1,12 @@
 import { useLang } from "@/i18n/LanguageContext";
 import { useReveal } from "@/hooks/use-reveal";
 import { MapPin, ExternalLink } from "lucide-react";
+import instagramIcon from "@/assets/instagram-logo.png";
+import whatsappIcon from "@/assets/whatsapp-logo.png";
 
-const MAPS_URL = "https://www.google.com/maps?q=21.543414,39.204645";
-const EMBED_URL =
-  "https://www.google.com/maps?q=21.543414,39.204645&z=17&output=embed";
+const GOOGLE_MAPS_URL = "https://maps.google.com/?q=21.543414,39.204645";
+const APPLE_MAPS_URL = "https://maps.apple.com/?q=21.543414,39.204645";
+const ADDRESS = "المملكة العربية السعودية - جدة - حي مشرفة - شارع التضامن";
 
 export const ContactMap = () => {
   const { t, dir } = useLang();
@@ -12,47 +14,85 @@ export const ContactMap = () => {
   return (
     <section ref={ref as any} dir={dir} className="py-20 bg-background">
       <div className="container">
-        <div className="reveal flex items-end justify-between gap-6 mb-8 flex-wrap">
-          <div>
-            <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase">
-              {t("contact_address_l")}
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl mt-2">
-              {t("contact_map_title")}
-            </h2>
+        <div className="reveal mb-8">
+          <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase">
+            {t("contact_address_l")}
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl mt-2">
+            {t("contact_map_title")}
+          </h2>
+        </div>
+
+        <div className="reveal reveal-delay-1 relative rounded-3xl overflow-hidden border border-border shadow-card bg-gradient-to-br from-secondary to-background p-8 md:p-12">
+          <div className="flex items-start gap-4 mb-8">
+            <div className="h-14 w-14 rounded-2xl bg-gradient-primary grid place-items-center flex-shrink-0 shadow-elegant">
+              <MapPin className="h-6 w-6 text-white" />
+            </div>
+            <div>
+              <div className="text-xs font-bold tracking-wider text-primary uppercase mb-1">
+                {t("contact_address_l")}
+              </div>
+              <p className="text-lg font-semibold leading-relaxed">{ADDRESS}</p>
+            </div>
           </div>
-          <a
-            href={MAPS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-primary text-white font-semibold shadow-elegant hover:opacity-90 transition-opacity"
-          >
-            <MapPin className="h-4 w-4" />
-            {t("contact_open_maps")}
-            <ExternalLink className="h-3.5 w-3.5 opacity-80" />
-          </a>
-        </div>
 
-        <div className="reveal reveal-delay-1 relative rounded-3xl overflow-hidden border border-border shadow-card">
-          <iframe
-            title="Arkan Alitqan Arabiya — Location"
-            src={EMBED_URL}
-            className="w-full h-[420px] md:h-[480px]"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
-        </div>
+          <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            <a
+              href={GOOGLE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-primary text-white font-semibold shadow-elegant hover:opacity-90 hover:scale-[1.02] transition-all"
+            >
+              <MapPin className="h-4 w-4" />
+              افتح في خرائط جوجل
+              <ExternalLink className="h-3.5 w-3.5 opacity-80" />
+            </a>
+            <a
+              href={APPLE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-foreground text-background font-semibold shadow-card hover:opacity-90 hover:scale-[1.02] transition-all"
+            >
+              <MapPin className="h-4 w-4" />
+              افتح في Apple Maps
+              <ExternalLink className="h-3.5 w-3.5 opacity-80" />
+            </a>
+          </div>
 
-        <a
-          href={MAPS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="reveal reveal-delay-2 mt-4 inline-flex items-center gap-2 text-sm text-primary hover:underline break-all"
-        >
-          <MapPin className="h-4 w-4 flex-shrink-0" />
-          {MAPS_URL}
-        </a>
+          <div className="flex items-center gap-4 pt-6 border-t border-border">
+            <span className="text-sm font-semibold text-muted-foreground">
+              {t("contact_kicker") || "تواصل معنا"}:
+            </span>
+            <a
+              href="https://wa.me/966580535332"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="hover:scale-110 transition-transform"
+            >
+              <img
+                src={whatsappIcon}
+                alt="WhatsApp"
+                className="h-[45px] w-[45px] object-contain"
+                style={{ mixBlendMode: "multiply" }}
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/arkan_alitqan.ksa"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="hover:scale-110 transition-transform"
+            >
+              <img
+                src={instagramIcon}
+                alt="Instagram"
+                className="h-[45px] w-[45px] object-contain"
+                style={{ mixBlendMode: "multiply" }}
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
