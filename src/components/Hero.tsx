@@ -120,8 +120,8 @@ export const Hero = () => {
         <div className="absolute -left-32 top-1/3 h-[600px] w-[600px] bg-gradient-radial-red blur-3xl animate-pulse-glow" />
       </div>
 
-      <div className="relative container pt-40 pb-20 grid lg:grid-cols-2 gap-12 items-center min-h-screen">
-        <div className="space-y-8">
+      <div className="relative container pt-40 pb-20 flex items-center justify-center min-h-screen">
+        <div className="space-y-8 max-w-3xl text-center mx-auto">
           <span className="hero-anim inline-flex items-center gap-2 px-4 py-2 rounded-full border border-dark-border bg-dark-muted/50 backdrop-blur text-xs font-semibold tracking-wide">
             <Sparkles className="h-3.5 w-3.5 text-primary-glow" />
             {t("hero_badge")}
