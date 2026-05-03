@@ -1,9 +1,11 @@
 import { useReveal } from "@/hooks/use-reveal";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Clock, Instagram } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 import { toast } from "sonner";
 import { FormEvent } from "react";
 import { useLang } from "@/i18n/LanguageContext";
+import instagramIcon from "@/assets/instagram-logo.png";
+import whatsappIcon from "@/assets/whatsapp-logo.png";
 
 export const Contact = () => {
   const ref = useReveal();
@@ -15,10 +17,7 @@ export const Contact = () => {
   };
 
   const contacts: { icon: any; label: string; value: string; href?: string }[] = [
-    { icon: MapPin, label: t("contact_address_l"), value: "المملكة العربية السعودية - جدة - حي مشرفة - شارع التضامن", href: "https://www.google.com/maps?q=21.543414,39.204645" },
-    { icon: Phone, label: "WhatsApp", value: "+966-58-053-5332", href: "https://wa.me/966580535332" },
-    { icon: Phone, label: "WhatsApp", value: "+966-56-860-3766", href: "https://wa.me/966568603766" },
-    { icon: Instagram, label: "Instagram", value: "@arkan_alitqan.ksa", href: "https://www.instagram.com/arkan_alitqan.ksa" },
+    { icon: MapPin, label: t("contact_address_l"), value: "المملكة العربية السعودية - جدة - حي مشرفة - شارع التضامن", href: "https://maps.google.com/?q=21.543414,39.204645" },
     { icon: Mail, label: t("contact_email_l"), value: "info@arkansafety.com", href: "mailto:info@arkansafety.com" },
     { icon: Clock, label: t("contact_hours_l"), value: t("contact_hours_v") },
   ];
@@ -54,6 +53,18 @@ export const Contact = () => {
                 <div key={idx}>{inner}</div>
               );
             })}
+
+            <div className="flex items-center gap-3 pt-2">
+              <a href="https://wa.me/966580535332" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +966580535332" className="hover:scale-110 transition-transform">
+                <img src={whatsappIcon} alt="WhatsApp" className="h-[45px] w-[45px] object-contain" style={{ mixBlendMode: "multiply" }} />
+              </a>
+              <a href="https://wa.me/966568603766" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +966568603766" className="hover:scale-110 transition-transform">
+                <img src={whatsappIcon} alt="WhatsApp" className="h-[45px] w-[45px] object-contain" style={{ mixBlendMode: "multiply" }} />
+              </a>
+              <a href="https://www.instagram.com/arkan_alitqan.ksa" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:scale-110 transition-transform">
+                <img src={instagramIcon} alt="Instagram" className="h-[45px] w-[45px] object-contain" style={{ mixBlendMode: "multiply" }} />
+              </a>
+            </div>
           </div>
         </div>
 
