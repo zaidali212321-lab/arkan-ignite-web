@@ -2,8 +2,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { useReveal } from "@/hooks/use-reveal";
 import { MapPin, ExternalLink } from "lucide-react";
 
-const MAPS_URL = "https://maps.app.goo.gl/ACNyCo68wQb5vCbh6?g_st=iw";
-// Generic Riyadh embed; the canonical short link above opens the exact pin.
+const MAPS_URL = "https://maps.app.goo.gl/nSudX8dXnpfQ12ZD7";
 const EMBED_URL =
   "https://www.google.com/maps?q=Riyadh,Saudi%20Arabia&output=embed";
 
