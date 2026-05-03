@@ -15,11 +15,11 @@ export const Contact = () => {
   };
 
   const contacts: { icon: any; label: string; value: string; href?: string }[] = [
-    { icon: MapPin, label: t("contact_address_l"), value: t("contact_address_v") },
-    { icon: Phone, label: "WhatsApp", value: "+966 58 053 5332", href: "https://wa.me/966580535332" },
-    { icon: Phone, label: "WhatsApp", value: "+966 56 860 3766", href: "https://wa.me/966568603766" },
+    { icon: MapPin, label: t("contact_address_l"), value: "المملكة العربية السعودية - جدة - حي مشرفة - شارع التضامن", href: "https://www.google.com/maps?q=21.543414,39.204645" },
+    { icon: Phone, label: "WhatsApp", value: "+966-58-053-5332", href: "https://wa.me/966580535332" },
+    { icon: Phone, label: "WhatsApp", value: "+966-56-860-3766", href: "https://wa.me/966568603766" },
     { icon: Instagram, label: "Instagram", value: "@arkan_alitqan.ksa", href: "https://www.instagram.com/arkan_alitqan.ksa" },
-    { icon: Mail, label: t("contact_email_l"), value: "info@arkanalitqan.com", href: "mailto:info@arkanalitqan.com" },
+    { icon: Mail, label: t("contact_email_l"), value: "info@arkansafety.com", href: "mailto:info@arkansafety.com" },
     { icon: Clock, label: t("contact_hours_l"), value: t("contact_hours_v") },
   ];
 

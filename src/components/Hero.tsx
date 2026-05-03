@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/MagneticButton";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
-import extinguisher from "@/assets/extinguisher.png";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroVideo from "@/assets/hero-bg.mp4";
 
