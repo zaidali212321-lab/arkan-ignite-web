@@ -39,8 +39,24 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };
 
-export const useLang = () => {
+const fallbackCtx: Ctx = {
+  lang: "ar",
+  dir: "rtl",
+  setLang: () => {},
+  toggle: () => {},
+  t: (key) => {
+    const entry = translations[key];
+    return entry?.ar ?? entry?.en ?? (key as string);
+  },
+};
+
+export const useLang = (): Ctx => {
   const ctx = useContext(LanguageContext);
-  if (!ctx) throw new Error("useLang must be used within LanguageProvider");
+  if (!ctx) {
+    if (typeof console !== "undefined") {
+      console.warn("useLang used outside LanguageProvider — using fallback context.");
+    }
+    return fallbackCtx;
+  }
   return ctx;
 };
