@@ -1,11 +1,13 @@
 import whatsappIcon from "@/assets/whatsapp-logo.png";
+import { trackWhatsAppClick, waHref } from "@/lib/whatsapp";
 
 export const FloatingWhatsApp = () => (
   <a
-    href="https://wa.me/966580535332"
+    href={waHref("primary")}
     target="_blank"
     rel="noopener noreferrer"
     aria-label="WhatsApp"
+    onClick={() => trackWhatsAppClick("primary", "floating_button")}
     className="fixed bottom-6 left-6 z-50 h-14 w-14 rounded-full grid place-items-center hover:scale-110 transition-transform"
   >
     <img

@@ -22,6 +22,13 @@ export const translations = {
   hero_stat_projects: { ar: "مشروع منجز", en: "Projects Done" },
   hero_stat_clients: { ar: "عميل موثوق", en: "Trusted Clients" },
   scroll_label: { ar: "اسحب للأسفل", en: "SCROLL" },
+  hero_top_label: { ar: "شركة رائدة في السلامة", en: "A LEADING SAFETY COMPANY" },
+  hero_testimonial: {
+    ar: "تعاملنا مع أركان الإتقان أعطى منشأتنا أعلى مستويات الحماية. تنفيذ احترافي وفريق متجاوب على مدار الساعة.",
+    en: "Working with Arkan Alitqan brought our facility the highest level of protection. Impeccable execution and a 24/7 responsive team.",
+  },
+  hero_testimonial_name: { ar: "م. خالد العتيبي", en: "Eng. Khalid Al-Otaibi" },
+  hero_testimonial_role: { ar: "مدير السلامة · مجمع صناعي", en: "Safety Manager · Industrial Complex" },
 
   // Showcase
   showcase_kicker: { ar: "العرض التفاعلي", en: "Interactive Showcase" },

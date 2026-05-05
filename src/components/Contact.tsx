@@ -6,6 +6,7 @@ import { FormEvent } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 import instagramIcon from "@/assets/instagram-logo.png";
 import whatsappIcon from "@/assets/whatsapp-logo.png";
+import { trackWhatsAppClick, waHref } from "@/lib/whatsapp";
 
 export const Contact = () => {
   const ref = useReveal();
@@ -55,10 +56,10 @@ export const Contact = () => {
             })}
 
             <div className="flex items-center gap-3 pt-2">
-              <a href="https://wa.me/966580535332" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +966580535332" className="hover:scale-110 transition-transform">
+              <a href={waHref("primary")} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +966580535332" onClick={() => trackWhatsAppClick("primary", "contact_socials")} className="hover:scale-110 transition-transform">
                 <img src={whatsappIcon} alt="WhatsApp" className="h-[45px] w-[45px] object-contain" style={{ mixBlendMode: "multiply" }} />
               </a>
-              <a href="https://wa.me/966568603766" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +966568603766" className="hover:scale-110 transition-transform">
+              <a href={waHref("secondary")} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +966568603766" onClick={() => trackWhatsAppClick("secondary", "contact_socials")} className="hover:scale-110 transition-transform">
                 <img src={whatsappIcon} alt="WhatsApp" className="h-[45px] w-[45px] object-contain" style={{ mixBlendMode: "multiply" }} />
               </a>
               <a href="https://www.instagram.com/arkan_alitqan.ksa" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:scale-110 transition-transform">
