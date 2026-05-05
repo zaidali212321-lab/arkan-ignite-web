@@ -3,6 +3,7 @@ import { useReveal } from "@/hooks/use-reveal";
 import { MapPin, ExternalLink } from "lucide-react";
 import instagramIcon from "@/assets/instagram-logo.png";
 import whatsappIcon from "@/assets/whatsapp-logo.png";
+import { trackWhatsAppClick, waHref } from "@/lib/whatsapp";
 
 const GOOGLE_MAPS_URL = "https://maps.google.com/?q=21.543414,39.204645";
 const APPLE_MAPS_URL = "https://maps.apple.com/?q=21.543414,39.204645";
@@ -64,10 +65,11 @@ export const ContactMap = () => {
               {t("contact_kicker") || "تواصل معنا"}:
             </span>
             <a
-              href="https://wa.me/966580535332"
+              href={waHref("primary")}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
+              onClick={() => trackWhatsAppClick("primary", "contact_map")}
               className="hover:scale-110 transition-transform"
             >
               <img
