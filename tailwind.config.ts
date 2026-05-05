@@ -55,11 +55,18 @@ export default {
         },
         "primary-glow": "hsl(var(--primary-glow))",
         "primary-deep": "hsl(var(--primary-deep))",
+        amber: {
+          DEFAULT: "hsl(var(--amber))",
+          foreground: "hsl(var(--amber-foreground))",
+        },
       },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
+        "gradient-warm": "var(--gradient-warm)",
         "gradient-dark": "var(--gradient-dark)",
         "gradient-radial-red": "var(--gradient-radial-red)",
+        "gradient-radial-amber": "var(--gradient-radial-amber)",
+        "gradient-hero-overlay": "var(--gradient-hero-overlay)",
       },
       boxShadow: {
         elegant: "var(--shadow-elegant)",
