@@ -23,6 +23,11 @@ export const translations = {
   hero_stat_clients: { ar: "عميل موثوق", en: "Trusted Clients" },
   scroll_label: { ar: "اسحب للأسفل", en: "SCROLL" },
   hero_top_label: { ar: "شركة رائدة في السلامة", en: "A LEADING SAFETY COMPANY" },
+  hero_certs: {
+    ar: "حلول معتمدة وفق معايير UL · NFPA · FM العالمية لحماية المنشآت الصناعية والتجارية.",
+    en: "Solutions certified to UL · NFPA · FM international standards for industrial and commercial facilities.",
+  },
+  hero_cta2: { ar: "تواصل معنا", en: "Contact Us" },
   hero_testimonial: {
     ar: "تعاملنا مع أركان الإتقان أعطى منشأتنا أعلى مستويات الحماية. تنفيذ احترافي وفريق متجاوب على مدار الساعة.",
     en: "Working with Arkan Alitqan brought our facility the highest level of protection. Impeccable execution and a 24/7 responsive team.",
