@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Search, Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LanguageContext";
@@ -19,10 +19,9 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { t, lang, toggle, dir } = useLang();
   const location = useLocation();
-  const isHome = location.pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -30,24 +29,25 @@ export const Navbar = () => {
 
   useEffect(() => setOpen(false), [location.pathname]);
 
-  const overDark = isHome && !scrolled;
-
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/85 backdrop-blur-xl border-b border-border shadow-card"
-          : isHome
-          ? "bg-transparent"
-          : "bg-background/85 backdrop-blur-xl border-b border-border"
+      className={`sticky top-0 inset-x-0 z-50 bg-white border-b border-[#E5E5E5] transition-shadow duration-300 ${
+        scrolled ? "shadow-sm" : ""
       }`}
     >
       <nav className="container flex items-center justify-between h-20" dir={dir}>
-        <Link to="/" className="flex items-center gap-3 group">
-          <img src={logo} alt="Arkan Alitqan Arabiya" className="h-12 w-auto transition-transform group-hover:scale-105" style={{ background: "transparent" }} />
+        {/* Logo (right side in RTL — first child is right) */}
+        <Link to="/" className="flex items-center gap-2 group shrink-0">
+          <img
+            src={logo}
+            alt="Arkan Alitqan Arabiya"
+            className="h-12 w-auto transition-transform group-hover:scale-105"
+            style={{ background: "transparent" }}
+          />
         </Link>
 
-        <ul className="hidden lg:flex items-center gap-1">
+        {/* Center nav links */}
+        <ul className="hidden lg:flex items-center gap-1 mx-auto">
           {links.map((l) => (
             <li key={l.to}>
               <NavLink
@@ -57,8 +57,6 @@ export const Navbar = () => {
                   `relative px-4 py-2 text-sm font-semibold rounded-full transition-colors ${
                     isActive
                       ? "text-primary"
-                      : overDark
-                      ? "text-white hover:text-primary-glow"
                       : "text-foreground hover:text-primary"
                   }`
                 }
@@ -76,35 +74,26 @@ export const Navbar = () => {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        {/* Far-left CTA + utilities */}
+        <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={toggle}
             aria-label="Toggle language"
-            className={`hidden sm:inline-flex items-center gap-1.5 h-10 px-3 rounded-full border text-xs font-bold tracking-wider transition-colors ${
-              overDark
-                ? "border-white/30 text-white hover:bg-white/10"
-                : "border-border text-foreground hover:bg-secondary"
-            }`}
+            className="hidden sm:inline-flex items-center gap-1.5 h-10 px-3 rounded-full border border-border text-xs font-bold tracking-wider text-foreground hover:bg-secondary transition-colors"
           >
             <Globe className="h-3.5 w-3.5" />
             {lang === "ar" ? "EN" : "AR"}
           </button>
-          <button
-            aria-label="Search"
-            className={`hidden sm:grid place-items-center h-10 w-10 rounded-full border transition-colors ${
-              overDark
-                ? "border-white/30 text-white hover:bg-white/10"
-                : "border-border text-foreground hover:bg-secondary"
-            }`}
+          <Button
+            size="sm"
+            asChild
+            className="hidden sm:inline-flex bg-primary hover:bg-primary-deep text-primary-foreground font-bold rounded-full px-6 h-10 shadow-sm"
           >
-            <Search className="h-4 w-4" />
-          </button>
-          <Button variant="hero" size="sm" className="hidden sm:inline-flex" asChild>
-            <Link to="/contact">{t("cta_quote")}</Link>
+            <Link to="/contact">{t("nav_contact")}</Link>
           </Button>
           <button
             aria-label="Menu"
-            className={`lg:hidden grid place-items-center h-10 w-10 rounded-full ${overDark ? "text-white" : "text-foreground"}`}
+            className="lg:hidden grid place-items-center h-10 w-10 rounded-full text-foreground hover:bg-secondary"
             onClick={() => setOpen(!open)}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -113,7 +102,7 @@ export const Navbar = () => {
       </nav>
 
       {open && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border" dir={dir}>
+        <div className="lg:hidden bg-white border-t border-[#E5E5E5]" dir={dir}>
           <ul className="container py-4 flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.to}>
@@ -137,8 +126,8 @@ export const Navbar = () => {
               <Globe className="h-4 w-4" />
               {lang === "ar" ? "English" : "العربية"}
             </button>
-            <Button variant="hero" className="mt-2" asChild>
-              <Link to="/contact">{t("cta_quote")}</Link>
+            <Button className="mt-2 bg-primary hover:bg-primary-deep text-primary-foreground font-bold" asChild>
+              <Link to="/contact">{t("nav_contact")}</Link>
             </Button>
           </ul>
         </div>
