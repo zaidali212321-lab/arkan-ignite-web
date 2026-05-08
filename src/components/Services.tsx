@@ -63,8 +63,11 @@ export const Services = ({ compact = false }: { compact?: boolean }) => {
           {services.map((s, i) => (
             <div
               key={s.t}
-              className="stack-card sticky top-20 mb-8"
-              style={{ zIndex: 10 + i }}
+              className="stack-card sticky mb-12"
+              style={{
+                top: `calc(6rem + ${i * 2.25}rem)`,
+                zIndex: 10 + i,
+              }}
             >
               <div className="grid md:grid-cols-2 gap-0 overflow-hidden rounded-3xl bg-card border border-border shadow-elegant min-h-[420px]">
                 {/* Image */}
