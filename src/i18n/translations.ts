@@ -241,6 +241,30 @@ export const translations = {
   // CTA banner
   cta_banner_title: { ar: "حماية منشأتك تبدأ بمكالمة واحدة", en: "Protecting Your Facility Starts With One Call" },
   cta_banner_desc: { ar: "تواصل معنا اليوم لاستشارة مجانية وحلول مخصصة.", en: "Contact us today for a free consultation and tailored solutions." },
+
+  // Reference Projects
+  ref_kicker: { ar: "إنجازاتنا", en: "Our Portfolio" },
+  ref_title_1: { ar: "المشاريع", en: "Reference" },
+  ref_title_2: { ar: "المرجعية", en: "Projects" },
+  ref_desc: {
+    ar: "نخبة من المشاريع التي نفذناها لشركة بنده للتجزئة عبر مختلف مناطق المملكة العربية السعودية.",
+    en: "A selection of projects delivered for Panda Retail Company across the Kingdom of Saudi Arabia.",
+  },
+  ref_p01: { ar: "بنده - تابية مول", en: "Panda Tabia Mall" },
+  ref_p02: { ar: "بنده - شارع الأمير متعب", en: "Panda Prince Metab Street" },
+  ref_p03: { ar: "بنده - السامر", en: "Panda Al Samer" },
+  ref_p04: { ar: "بنده - شارع ساري", en: "Panda Sari Street" },
+  ref_p05: { ar: "بنده هايبر - شارع الخامس", en: "Panda Hypermarket - Alkhames Avenue" },
+  ref_p06: { ar: "بنده هايبر - مكة الكاكية", en: "Panda Hypermarket - Mecca-Kakiya" },
+  ref_p07: { ar: "بنده هايبر - مكة العوالي", en: "Panda Hypermarket - Mecca-Alawaly" },
+  ref_p08: { ar: "بنده هايبر - إسكان الرصيفة", en: "Panda Hypermarket - Iskan Alrsiefeh" },
+  ref_p09: { ar: "بنده هايبر - نجران", en: "Panda Hypermarket - Najran" },
+  ref_p10: { ar: "بنده هايبر - جيزان", en: "Panda Hypermarket - Jisan" },
+  ref_more_title: { ar: "وأكثر من ذلك", en: "And more" },
+  ref_more_desc: {
+    ar: "بالإضافة إلى 25 فرعاً آخر لشركة بنده للتجزئة في جميع أنحاء المملكة.",
+    en: "In addition to 25 other Panda Retail Company branches across the Kingdom.",
+  },
 } as const;
 
 export type TranslationKey = keyof typeof translations;
