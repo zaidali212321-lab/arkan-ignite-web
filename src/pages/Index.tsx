@@ -5,6 +5,7 @@ import { WhyUs } from "@/components/WhyUs";
 import { Services } from "@/components/Services";
 import { Products } from "@/components/Products";
 import { Clients } from "@/components/Clients";
+import { ReferenceProjects } from "@/components/ReferenceProjects";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageLayout } from "@/components/PageLayout";
 
