@@ -17,6 +17,7 @@ const Index = () => (
     <WhyUs />
     <Services compact />
     <Products compact />
+    <ReferenceProjects />
     <Clients />
     <ContactCTA />
   </PageLayout>
