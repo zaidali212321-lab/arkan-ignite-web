@@ -132,6 +132,13 @@
   .marquee {
     animation: marquee 35s linear infinite;
   }
+  .marquee-slow {
+    animation: marquee 80s linear infinite;
+    will-change: transform;
+  }
+  .marquee-slow:hover {
+    animation-play-state: paused;
+  }
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
