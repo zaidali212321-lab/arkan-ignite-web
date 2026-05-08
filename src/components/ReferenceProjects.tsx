@@ -1,7 +1,3 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MapPin, Sparkles } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import type { TranslationKey } from "@/i18n/translations";
 
@@ -15,8 +11,6 @@ import p07 from "@/assets/projects/p07.jpg";
 import p08 from "@/assets/projects/p08.jpg";
 import p09 from "@/assets/projects/p09.jpg";
 import p10 from "@/assets/projects/p10.jpg";
-
-gsap.registerPlugin(ScrollTrigger);
 
 type Project = { img: string; t: TranslationKey };
 
@@ -34,41 +28,13 @@ const projects: Project[] = [
 ];
 
 export const ReferenceProjects = () => {
-  const sectionRef = useRef<HTMLElement>(null);
   const { t, dir } = useLang();
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>(".ref-card");
-      cards.forEach((card, i) => {
-        if (i === cards.length - 1) return;
-        const next = cards[i + 1];
-        gsap.to(card, {
-          scale: 0.9,
-          opacity: 0.5,
-          ease: "none",
-          scrollTrigger: {
-            trigger: next,
-            start: "top 85%",
-            end: "top 25%",
-            scrub: true,
-          },
-        });
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const loop = [...projects, ...projects];
 
   return (
-    <section
-      id="reference-projects"
-      ref={sectionRef}
-      dir={dir}
-      className="py-28 bg-secondary/40"
-    >
+    <section id="reference-projects" dir={dir} className="py-24 bg-secondary/40 overflow-hidden">
       <div className="container">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="inline-block text-xs font-bold tracking-[0.3em] text-primary uppercase">
             {t("ref_kicker")}
           </span>
@@ -78,58 +44,34 @@ export const ReferenceProjects = () => {
           <p className="mt-5 text-muted-foreground text-lg">{t("ref_desc")}</p>
           <div className="mt-6 mx-auto h-[2px] w-24 bg-gradient-to-r from-transparent via-primary to-transparent" />
         </div>
+      </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {projects.map((p, i) => (
-            <div
-              key={p.t}
-              className="ref-card sticky mb-10"
-              style={{
-                top: `calc(6rem + ${i * 1.75}rem)`,
-                zIndex: 10 + i,
-              }}
+      <div className="relative group">
+        <div className="absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-secondary/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-secondary/80 to-transparent z-10 pointer-events-none" />
+
+        <div
+          className="flex w-max gap-6 md:gap-8 marquee-slow group-hover:[animation-play-state:paused]"
+          dir="ltr"
+        >
+          {loop.map((p, i) => (
+            <figure
+              key={i}
+              className="group/card relative shrink-0 w-[280px] md:w-[360px] h-[200px] md:h-[260px] rounded-2xl overflow-hidden bg-white border border-border shadow-card hover:shadow-elegant transition-all hover:[animation-play-state:paused]"
             >
-              <article className="overflow-hidden rounded-3xl bg-white border border-border shadow-elegant">
-                <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-secondary">
-                  <img
-                    src={p.img}
-                    alt={t(p.t)}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                  <div className="absolute top-5 left-5 rtl:left-auto rtl:right-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur text-[11px] font-bold tracking-wider text-foreground">
-                    <MapPin className="h-3.5 w-3.5 text-primary" />
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                </div>
-                <div className="px-6 py-5 md:py-6 flex items-center justify-center">
-                  <h3 className="font-display text-xl md:text-2xl uppercase tracking-wider text-primary text-center">
-                    {t(p.t)}
-                  </h3>
-                </div>
-              </article>
-            </div>
+              <img
+                src={p.img}
+                alt={t(p.t)}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105"
+              />
+              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/30 to-transparent">
+                <figcaption className="font-display text-white text-sm md:text-base uppercase tracking-wider text-center">
+                  {t(p.t)}
+                </figcaption>
+              </div>
+            </figure>
           ))}
-
-          {/* Closing card */}
-          <div
-            className="ref-card sticky mb-10"
-            style={{
-              top: `calc(6rem + ${projects.length * 1.75}rem)`,
-              zIndex: 10 + projects.length,
-            }}
-          >
-            <article className="overflow-hidden rounded-3xl bg-gradient-primary text-white shadow-elegant p-10 md:p-16 text-center">
-              <Sparkles className="h-10 w-10 mx-auto mb-5 opacity-90" />
-              <h3 className="font-display text-3xl md:text-4xl mb-3">
-                +25 {t("ref_more_title")}
-              </h3>
-              <p className="max-w-xl mx-auto text-white/90 text-lg leading-relaxed">
-                {t("ref_more_desc")}
-              </p>
-            </article>
-          </div>
         </div>
       </div>
     </section>
