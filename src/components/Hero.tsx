@@ -102,10 +102,9 @@ export const Hero = () => {
             {t("hero_top_label")}
           </span>
 
-          <h1 className="hero-anim font-display text-5xl md:text-6xl lg:text-7xl leading-[1.02]">
+          <h1 className="hero-anim font-latin font-extrabold text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight">
             {t("hero_title_1")}{" "}
-            <span className="text-gradient">{t("hero_title_2")}</span>{" "}
-            {t("hero_title_3")}
+            <span className="text-[hsl(var(--primary-glow))]">{t("hero_title_2")} {t("hero_title_3")}</span>
           </h1>
 
           <p className="hero-anim text-lg text-dark-foreground/75 max-w-xl leading-relaxed">

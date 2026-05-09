@@ -74,6 +74,9 @@ export const translations = {
   about_certified: { ar: "معتمدون من", en: "Certified by" },
   learn_more: { ar: "اقرأ المزيد", en: "Learn More" },
   view_all: { ar: "عرض الكل", en: "View All" },
+  about_c1: { ar: "سنة من الخبرة", en: "Years of Experience" },
+  about_c2: { ar: "مشروع منجز", en: "Projects Completed" },
+  about_c3: { ar: "رضا العملاء", en: "Client Satisfaction" },
 
   // Why us
   whyus_kicker: { ar: "قيمنا", en: "Our Values" },
