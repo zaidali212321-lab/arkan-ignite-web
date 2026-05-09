@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Search, Menu, X, Globe } from "lucide-react";
+import { Search, Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LanguageContext";
@@ -11,7 +11,6 @@ const links = [
   { to: "/services", key: "nav_services" as const },
   { to: "/products", key: "nav_products" as const },
   { to: "/clients", key: "nav_clients" as const },
-  { to: "/contact", key: "nav_contact" as const },
 ];
 
 export const Navbar = () => {
@@ -31,44 +30,52 @@ export const Navbar = () => {
   useEffect(() => setOpen(false), [location.pathname]);
 
   const overDark = isHome && !scrolled;
+  const Arrow = lang === "ar" ? ArrowLeft : ArrowRight;
 
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/85 backdrop-blur-xl border-b border-border shadow-card"
+          ? "bg-dark/60 backdrop-blur-[10px] border-b border-white/10 shadow-card"
           : isHome
-          ? "bg-transparent"
-          : "bg-background/85 backdrop-blur-xl border-b border-border"
+          ? "bg-dark/30 backdrop-blur-[10px] border-b border-white/5"
+          : "bg-dark/70 backdrop-blur-[10px] border-b border-white/10"
       }`}
     >
-      <nav className="container flex items-center justify-between h-20" dir={dir}>
-        <Link to="/" className="flex items-center gap-3 group">
-          <img src={logo} alt="Arkan Alitqan Arabiya" className="h-12 w-auto transition-transform group-hover:scale-105" style={{ background: "transparent" }} />
+      <nav className="container flex items-center justify-between h-20 font-latin" dir={dir}>
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3 group shrink-0">
+          <img
+            src={logo}
+            alt="Arkan Alitqan Arabiya"
+            className="h-11 w-auto transition-transform group-hover:scale-105"
+            style={{ background: "transparent" }}
+          />
         </Link>
 
-        <ul className="hidden lg:flex items-center gap-1">
+        {/* Center links */}
+        <ul className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
           {links.map((l) => (
             <li key={l.to}>
               <NavLink
                 to={l.to}
                 end={l.to === "/"}
                 className={({ isActive }) =>
-                  `relative px-4 py-2 text-sm font-semibold rounded-full transition-colors ${
+                  `relative px-4 py-2 text-sm font-medium tracking-wide transition-colors ${
                     isActive
-                      ? "text-primary"
-                      : overDark
-                      ? "text-white hover:text-primary-glow"
-                      : "text-foreground hover:text-primary"
+                      ? "text-white"
+                      : "text-white/75 hover:text-white"
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
                     {t(l.key)}
-                    {isActive && (
-                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary" />
-                    )}
+                    <span
+                      className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-amber transition-all duration-300 ${
+                        isActive ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                      }`}
+                    />
                   </>
                 )}
               </NavLink>
@@ -76,35 +83,49 @@ export const Navbar = () => {
           ))}
         </ul>
 
+        {/* Right actions */}
         <div className="flex items-center gap-2">
+          {/* AR/EN pill */}
           <button
             onClick={toggle}
             aria-label="Toggle language"
-            className={`hidden sm:inline-flex items-center gap-1.5 h-10 px-3 rounded-full border text-xs font-bold tracking-wider transition-colors ${
-              overDark
-                ? "border-white/30 text-white hover:bg-white/10"
-                : "border-border text-foreground hover:bg-secondary"
-            }`}
+            className="hidden sm:inline-flex items-center justify-center h-9 px-4 rounded-full border border-white/25 bg-white/5 text-white text-xs font-bold tracking-[0.15em] hover:bg-white/15 transition-colors"
           >
-            <Globe className="h-3.5 w-3.5" />
             {lang === "ar" ? "EN" : "AR"}
           </button>
+
+          {/* Search */}
           <button
             aria-label="Search"
-            className={`hidden sm:grid place-items-center h-10 w-10 rounded-full border transition-colors ${
-              overDark
-                ? "border-white/30 text-white hover:bg-white/10"
-                : "border-border text-foreground hover:bg-secondary"
-            }`}
+            className="hidden sm:grid place-items-center h-9 w-9 rounded-full border border-white/25 bg-white/5 text-white hover:bg-white/15 transition-colors"
           >
             <Search className="h-4 w-4" />
           </button>
-          <Button variant="hero" size="sm" className="hidden sm:inline-flex" asChild>
+
+          {/* Get a Quote — gradient pill */}
+          <Button
+            variant="hero"
+            asChild
+            className="hidden md:inline-flex h-9 rounded-full px-5 text-xs font-semibold tracking-wide"
+          >
             <Link to="/contact">{t("cta_quote")}</Link>
           </Button>
+
+          {/* Contact Us — white pill with arrow circle */}
+          <Link
+            to="/contact"
+            className="hidden md:inline-flex items-center gap-2 h-9 ps-5 pe-1 rounded-full bg-white text-dark text-xs font-semibold tracking-wide shadow-card hover:shadow-glow transition-shadow group"
+          >
+            {t("nav_contact")}
+            <span className="grid place-items-center h-7 w-7 rounded-full bg-gradient-warm text-white transition-transform group-hover:scale-110">
+              <Arrow className="h-3.5 w-3.5" />
+            </span>
+          </Link>
+
+          {/* Mobile menu button */}
           <button
             aria-label="Menu"
-            className={`lg:hidden grid place-items-center h-10 w-10 rounded-full ${overDark ? "text-white" : "text-foreground"}`}
+            className="lg:hidden grid place-items-center h-10 w-10 rounded-full text-white"
             onClick={() => setOpen(!open)}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -112,8 +133,9 @@ export const Navbar = () => {
         </div>
       </nav>
 
+      {/* Mobile drawer */}
       {open && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border" dir={dir}>
+        <div className="lg:hidden bg-dark/95 backdrop-blur-xl border-t border-white/10" dir={dir}>
           <ul className="container py-4 flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.to}>
@@ -121,8 +143,8 @@ export const Navbar = () => {
                   to={l.to}
                   end={l.to === "/"}
                   className={({ isActive }) =>
-                    `block px-4 py-3 rounded-lg font-semibold ${
-                      isActive ? "bg-primary/10 text-primary" : "text-foreground hover:bg-secondary"
+                    `block px-4 py-3 rounded-lg font-medium ${
+                      isActive ? "bg-white/10 text-white" : "text-white/80 hover:bg-white/5"
                     }`
                   }
                 >
@@ -132,12 +154,11 @@ export const Navbar = () => {
             ))}
             <button
               onClick={toggle}
-              className="mt-2 px-4 py-3 rounded-lg border border-border font-bold tracking-wider text-sm flex items-center gap-2"
+              className="mt-2 px-4 py-3 rounded-lg border border-white/15 text-white font-bold tracking-wider text-sm"
             >
-              <Globe className="h-4 w-4" />
               {lang === "ar" ? "English" : "العربية"}
             </button>
-            <Button variant="hero" className="mt-2" asChild>
+            <Button variant="hero" className="mt-2 rounded-full" asChild>
               <Link to="/contact">{t("cta_quote")}</Link>
             </Button>
           </ul>
