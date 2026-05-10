@@ -21,7 +21,7 @@ export interface LanguageContextValue {
 }
 
 const STORAGE_KEY = "lang";
-const DEFAULT_LANG: Lang = "en";
+const DEFAULT_LANG: Lang = "ar";
 
 const isLang = (v: unknown): v is Lang => v === "ar" || v === "en";
 
@@ -37,9 +37,7 @@ const readStoredLang = (): Lang => {
   if (typeof window === "undefined") return DEFAULT_LANG;
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    // Force English for Livohaus rebrand
-    if (!isLang(stored) || stored === "ar") return DEFAULT_LANG;
-    return stored;
+    return isLang(stored) ? stored : DEFAULT_LANG;
   } catch {
     return DEFAULT_LANG;
   }

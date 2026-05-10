@@ -1,13 +1,12 @@
 export const translations = {
   // Nav
   nav_home: { ar: "الرئيسية", en: "Home" },
-  nav_about: { ar: "من نحن", en: "About" },
-  nav_services: { ar: "خدماتنا", en: "Services" },
-  nav_products: { ar: "المشاريع", en: "Projects" },
-  nav_clients: { ar: "آراء العملاء", en: "Testimonials" },
-  nav_faq: { ar: "أسئلة شائعة", en: "FAQ's" },
-  nav_contact: { ar: "تواصل معنا", en: "Contact" },
-  cta_quote: { ar: "اطلب عرض سعر مجاني", en: "Request Free Quote" },
+  nav_about: { ar: "ملف الشركة", en: "Company Profile" },
+  nav_services: { ar: "خدماتنا", en: "Our Services" },
+  nav_products: { ar: "منتجاتنا", en: "Our Products" },
+  nav_clients: { ar: "عملاؤنا", en: "Our Clients" },
+  nav_contact: { ar: "اتصل بنا", en: "Contact Us" },
+  cta_quote: { ar: "احصل على عرض سعر", en: "Get a Quote" },
 
   // Hero
   hero_badge: { ar: "أركان الإتقان العربية · خبراء السلامة الصناعية", en: "Arkan Alitqan Arabiya · Industrial Safety Experts" },
