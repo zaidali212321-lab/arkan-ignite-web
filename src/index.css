@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -15,12 +15,12 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 8%;
 
-    /* Warm premium brand: deep red + amber accents */
-    --primary: 352 78% 40%;
+    /* Livohaus brand: vibrant orange */
+    --primary: 14 88% 54%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 14 90% 55%;
-    --primary-deep: 352 75% 28%;
-    --amber: 32 95% 58%;
+    --primary-glow: 14 92% 60%;
+    --primary-deep: 14 80% 42%;
+    --amber: 14 88% 54%;
     --amber-foreground: 0 0% 8%;
 
     --secondary: 0 0% 96%;
@@ -87,15 +87,15 @@
   html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Cairo', 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', 'Cairo', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
   ::selection { background: hsl(var(--primary) / 0.25); }
 }
 
 @layer utilities {
-  .font-display { font-family: 'Cairo', 'Inter', sans-serif; font-weight: 800; letter-spacing: -0.02em; }
-  .font-latin { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'Outfit', 'Inter', sans-serif; font-weight: 600; letter-spacing: -0.02em; }
+  .font-latin { font-family: 'Outfit', 'Inter', sans-serif; }
 
   .bg-grid {
     background-image:
