@@ -51,6 +51,14 @@ export const Navbar = () => {
             className="h-11 w-auto transition-transform group-hover:scale-105"
             style={{ background: "transparent" }}
           />
+          <div className="flex flex-col justify-center leading-none">
+            <span className="font-latin font-bold text-[11px] tracking-[0.12em] text-white uppercase whitespace-nowrap">
+              ARKAN ALITQAN
+            </span>
+            <span className="font-latin font-semibold text-[9.5px] tracking-[0.28em] text-white/85 uppercase whitespace-nowrap mt-[3px]">
+              ALARABIYA
+            </span>
+          </div>
         </Link>
 
         {/* Center links */}
